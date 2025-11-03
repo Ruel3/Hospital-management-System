@@ -1,17 +1,16 @@
 // --- Global Data Stores (Simulating Database Tables) ---
 let patients = [];
+// ... (Keep other arrays: staff, admissions, prescriptions, billings, pharmacies)
 let staff = [];
 let admissions = [];
 let prescriptions = [];
 let billings = [];
-
-// Pre-define Pharmacy data (as this is a static reference entity)
 const pharmacies = [
     { pharmacyID: 'PH1', location: 'Main Hospital' },
     { pharmacyID: 'PH2', location: 'Satellite Clinic' }
 ];
 
-// --- ID Counters ---
+// --- ID Counters (Keep these) ---
 let nextPatientID = 1001;
 let nextStaffID = 2001;
 let nextAdmissionID = 3001;
@@ -20,15 +19,17 @@ let nextBillingID = 5001;
 
 // --- Helper Functions ---
 
-// Function to switch visible sections (for the navigation)
+// REVISED: Function to switch visible sections using the 'active' class
 function showSection(id) {
+    // 1. Remove 'active' class from all sections
     document.querySelectorAll('.content-section').forEach(section => {
-        section.style.display = 'none';
+        section.classList.remove('active');
     });
-    document.getElementById(id).style.display = 'block';
+    // 2. Add 'active' class to the target section
+    document.getElementById(id).classList.add('active');
 }
 
-// Function to populate dropdowns (e.g., Pharmacy selection)
+// Function to populate dropdowns (e.g., Pharmacy selection) - Keep this
 function populateDropdowns() {
     const pharmacySelect = document.getElementById('r_pharmacyID');
     pharmacySelect.innerHTML = '<option value="">Select Pharmacy</option>';
@@ -40,9 +41,9 @@ function populateDropdowns() {
     });
 }
 
-// --- Data Rendering Functions ---
-
+// --- Data Rendering Functions (Keep these) ---
 function renderList(dataArray, listElementId) {
+    // ... (Keep the full implementation of renderList) ...
     const list = document.getElementById(listElementId);
     list.innerHTML = '';
     if (dataArray.length === 0) {
@@ -71,10 +72,9 @@ function renderList(dataArray, listElementId) {
     });
 }
 
-// --- Form Submission Handlers ---
-
-// 1. Patient Form
+// --- Form Submission Handlers (Keep all these as they were correct) ---
 document.getElementById('patient-form').addEventListener('submit', function(event) {
+    // ... (Patient form logic) ...
     event.preventDefault();
     const newPatient = {
         patientID: `P${nextPatientID++}`,
@@ -87,8 +87,8 @@ document.getElementById('patient-form').addEventListener('submit', function(even
     this.reset();
 });
 
-// 2. Staff Form
 document.getElementById('staff-form').addEventListener('submit', function(event) {
+    // ... (Staff form logic) ...
     event.preventDefault();
     const newStaff = {
         staffID: `S${nextStaffID++}`,
@@ -101,8 +101,8 @@ document.getElementById('staff-form').addEventListener('submit', function(event)
     this.reset();
 });
 
-// 3. Admission Form
 document.getElementById('admission-form').addEventListener('submit', function(event) {
+    // ... (Admission form logic) ...
     event.preventDefault();
     const newAdmission = {
         admissionID: `A${nextAdmissionID++}`,
@@ -117,8 +117,8 @@ document.getElementById('admission-form').addEventListener('submit', function(ev
     this.reset();
 });
 
-// 4. Prescription Form (and Pharmacy Display)
 document.getElementById('prescription-form').addEventListener('submit', function(event) {
+    // ... (Prescription form logic) ...
     event.preventDefault();
     const newPrescription = {
         prescriptionID: `R${nextPrescriptionID++}`,
@@ -134,8 +134,8 @@ document.getElementById('prescription-form').addEventListener('submit', function
     this.reset();
 });
 
-// 5. Billing Form
 document.getElementById('billing-form').addEventListener('submit', function(event) {
+    // ... (Billing form logic) ...
     event.preventDefault();
     const newBill = {
         billID: `B${nextBillingID++}`,
@@ -153,6 +153,8 @@ document.getElementById('billing-form').addEventListener('submit', function(even
 
 function init() {
     // 1. Set the initial view to Patient
+    // This is now handled by the 'active' class in HTML/CSS, but we call it here 
+    // to ensure the class is set if it was missed in the HTML.
     showSection('patient-section');
     
     // 2. Populate the Pharmacy dropdown and list
