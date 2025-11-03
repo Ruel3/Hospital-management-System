@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HMS Patient Management</title>
+    <title>Comprehensive HMS Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,33 +11,92 @@
         <h1>🏥 Hospital Management Dashboard</h1>
     </header>
     
+    <nav>
+        <button onclick="showSection('patient-section')">Patient</button>
+        <button onclick="showSection('staff-section')">Staff</button>
+        <button onclick="showSection('admission-section')">Admission</button>
+        <button onclick="showSection('prescription-section')">Prescription</button>
+        <button onclick="showSection('billing-section')">Billing</button>
+    </nav>
+    
     <main>
-        <section id="patient-form-section">
-            <h2>Add New Patient</h2>
+        <section id="patient-section" class="content-section active">
+            <h2>Patients 👨‍🦱</h2>
             <form id="patient-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required>
-
-                <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" required>
-
-                <label for="admissionDate">Admission Date:</label>
-                <input type="date" id="admissionDate" required>
-                
+                <input type="text" id="p_name" placeholder="Name" required>
+                <input type="date" id="p_dob" required>
+                <input type="date" id="p_admDate" placeholder="Admission Date" required>
                 <button type="submit">Register Patient</button>
             </form>
+            <h3>Registered Patients</h3>
+            <ul id="patient-list"></ul>
         </section>
 
-        <section id="patient-list-section">
-            <h2>Registered Patients</h2>
-            <ul id="patient-list">
-                </ul>
+        <section id="staff-section" class="content-section" style="display:none;">
+            <h2>Staff Management 🩺</h2>
+            <form id="staff-form">
+                <input type="text" id="s_name" placeholder="Name" required>
+                <select id="s_role" required>
+                    <option value="">Select Role</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Nurse">Nurse</option>
+                </select>
+                <input type="text" id="s_spec" placeholder="Specialization" required>
+                <button type="submit">Add Staff</button>
+            </form>
+            <h3>Current Staff</h3>
+            <ul id="staff-list"></ul>
+        </section>
+
+        <section id="admission-section" class="content-section" style="display:none;">
+            <h2>Admissions 🛌</h2>
+            <form id="admission-form">
+                <input type="text" id="a_patientID" placeholder="Patient ID (e.g., P1001)" required>
+                <input type="text" id="a_staffID" placeholder="Staff ID (e.g., S2001) - Handler" required>
+                <input type="text" id="a_roomNum" placeholder="Room Number" required>
+                <input type="date" id="a_discDate" placeholder="Discharge Date (Optional)">
+                <button type="submit">Record Admission</button>
+            </form>
+            <h3>Active Admissions</h3>
+            <ul id="admission-list"></ul>
+        </section>
+
+        <section id="prescription-section" class="content-section" style="display:none;">
+            <h2>Prescriptions & Pharmacy 💊</h2>
+            <form id="prescription-form">
+                <input type="text" id="r_patientID" placeholder="Patient ID" required>
+                <input type="text" id="r_staffID" placeholder="Staff ID (Writer)" required>
+                <input type="text" id="r_medication" placeholder="Medication Name" required>
+                <input type="text" id="r_dosage" placeholder="Dosage" required>
+                <select id="r_pharmacyID" required>
+                    <option value="">Select Pharmacy</option>
+                    </select>
+                <button type="submit">Write Prescription</button>
+            </form>
+            <h3>Prescription History</h3>
+            <ul id="prescription-list"></ul>
+            
+            <div id="pharmacy-info">
+                <h4>Registered Pharmacies</h4>
+                <ul id="pharmacy-list"></ul>
+            </div>
+        </section>
+
+        <section id="billing-section" class="content-section" style="display:none;">
+            <h2>Billing 💰</h2>
+            <form id="billing-form">
+                <input type="text" id="b_patientID" placeholder="Patient ID" required>
+                <input type="number" id="b_totalAmount" step="0.01" placeholder="Total Amount" required>
+                <select id="b_paymentStatus" required>
+                    <option value="Pending">Pending</option>
+                    <option value="Paid">Paid</option>
+                </select>
+                <button type="submit">Create Bill</button>
+            </form>
+            <h3>Billing Records</h3>
+            <ul id="billing-list"></ul>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2025 HMS System</p>
-    </footer>
     <script src="script.js"></script>
 </body>
 </html>
