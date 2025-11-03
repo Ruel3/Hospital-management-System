@@ -1,48 +1,8 @@
-body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-}
+/* ... (Keep existing styles for body, header, nav, form, ul/li) ... */
 
-header {
-    background-color: #007bff;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-    background-color: #e9ecef;
-    padding: 10px 0;
-    border-bottom: 1px solid #ccc;
-}
-
-nav button {
-    background: none;
-    border: none;
-    padding: 10px 20px;
-    margin: 0 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    color: #007bff;
-    transition: background-color 0.3s;
-}
-
-nav button:hover {
-    background-color: #d0d7e0;
-}
-
-main {
-    padding: 20px;
-}
-
+/* Hide all content sections by default */
 .content-section {
+    display: none; /* Key change: hides all sections */
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -50,33 +10,9 @@ main {
     margin-bottom: 20px;
 }
 
-form input, form select, form button {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+/* Only show the active section */
+.content-section.active {
+    display: block; /* Key change: shows the active section */
 }
 
-form button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-form button:hover {
-    background-color: #218838;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-ul li {
-    padding: 8px 0;
-    border-bottom: 1px dashed #eee;
-}
+/* ... (Keep existing styles for form input, select, button, etc.) ... */
