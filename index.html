@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS Patient Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🏥 Hospital Management Dashboard</h1>
+    </header>
+    
+    <main>
+        <section id="patient-form-section">
+            <h2>Add New Patient</h2>
+            <form id="patient-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" required>
+
+                <label for="admissionDate">Admission Date:</label>
+                <input type="date" id="admissionDate" required>
+                
+                <button type="submit">Register Patient</button>
+            </form>
+        </section>
+
+        <section id="patient-list-section">
+            <h2>Registered Patients</h2>
+            <ul id="patient-list">
+                </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 HMS System</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
