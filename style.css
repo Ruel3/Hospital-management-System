@@ -1,18 +1,158 @@
-/* ... (Keep existing styles for body, header, nav, form, ul/li) ... */
+/* style.css */
 
-/* Hide all content sections by default */
-.content-section {
-    display: none; /* Key change: hides all sections */
-    background-color: blue;
+/* Global Styles */
+:root {
+    --primary-color: #007bff; /* Bright Blue */
+    --secondary-color: #6c757d; /* Grey */
+    --background-color: #e9f0f9; /* Very Light Blue/Off-white for main background */
+    --content-bg: #ffffff; /* White for section backgrounds */
+    --dark-text: #212529; /* Dark text */
+    --header-bg: #0056b3; /* Darker Blue for Header */
+    --button-hover: #004085; /* Even Darker Blue for Hover */
+    --border-color: #ced4da;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color); /* The requested light blue background */
+    color: var(--dark-text);
+}
+
+header {
+    background-color: var(--header-bg);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Navigation Styles --- */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: var(--primary-color);
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+
+nav button:hover {
+    background-color: var(--button-hover);
+}
+
+nav button.active {
+    background-color: var(--content-bg);
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* --- Main Content Layout --- */
+main {
     padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: var(--content-bg);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.content-section {
+    display: none; /* Hidden by default, controlled by JavaScript */
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     margin-bottom: 20px;
 }
 
-/* Only show the active section */
 .content-section.active {
-    display: block; /* Key change: shows the active section */
+    display: block; /* Shown when active */
 }
 
-/* ... (Keep existing styles for form input, select, button, etc.) ... */
+/* --- Form Styles --- */
+form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #f8f9fa;
+    border-radius: 5px;
+    background-color: #f8f9fa; /* Light grey for form background */
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+button[type="submit"] {
+    grid-column: span 1; /* Occupy one column */
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--button-hover);
+}
+
+/* --- List Styles (Data Display) --- */
+h3, h4 {
+    margin-top: 30px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    color: var(--header-bg);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #f1f7fe; /* Very light blue for list items */
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    white-space: pre-wrap; /* Allows formatting for data */
+}
+
+/* Specific adjustments for smaller screens */
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+    }
+    nav button {
+        margin: 5px;
+        flex-grow: 1;
+    }
+    form {
+        grid-template-columns: 1fr; /* Stack inputs on smaller screens */
+    }
+}
